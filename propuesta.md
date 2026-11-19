@@ -9,6 +9,43 @@ Fecha: noviembre de 2026
 
 ---
 
+## Resumen
+
+Sharaon Garcia es una agente inmobiliaria independiente en La Paz. Actualmente
+atiende consultas por WhatsApp y registra contactos y citas en hojas sueltas o
+en un cuaderno. El sitio web desarrollado en Programación Web presenta
+propiedades y prepara solicitudes de visita para enviarlas por WhatsApp, pero
+no conserva esas solicitudes ni cuenta con herramientas para gestionar el
+trabajo diario de la agente.
+
+El proyecto propone ampliar el sitio existente con un backend en PHP y una
+base de datos MySQL para consultar el catálogo y gestionar solicitudes de
+visita, contactos, seguimientos, citas y publicaciones planificadas. El acceso
+al espacio de gestión se protegerá y se documentará un procedimiento de
+respaldo. La prioridad de las funciones, las condiciones de uso y la
+factibilidad del despliegue se validarán mediante una entrevista formal antes
+de cerrar los requerimientos. El sistema se verificará con casos de prueba y
+pruebas de uso móvil.
+
+## Introducción
+
+Este documento presenta el proyecto integrador del módulo Proyecto de
+Software del Programa Académico Desconcentrado "Técnico Superior en
+Informática" de la UMSA, Sede Colquencha. El trabajo continúa el sitio web
+construido para Sharaon Garcia en el módulo de Programación Web y aborda la
+falta de un registro centralizado para sus contactos, solicitudes de visita y
+actividades.
+
+La propuesta describe el contexto del cliente, el problema identificado, los
+objetivos, la justificación, la factibilidad, el alcance y el cronograma. La
+entrevista formal todavía está pendiente; por ello, las necesidades y
+condiciones que aún no se han confirmado se presentan como aspectos por
+validar, no como resultados comprobados. El análisis y la construcción
+posteriores definirán los requerimientos, el modelo de datos, la
+implementación, las pruebas y, si se confirma su viabilidad, el despliegue.
+
+---
+
 ## Tipo de proyecto
 
 **Proyecto integrador.** Se resuelve un problema concreto de un cliente real
@@ -111,26 +148,19 @@ para la cliente.
 
 ### Objetivo general
 
-Ampliar el sitio web construido en Programación Web con un backend y una base
-de datos que permitan a la agente inmobiliaria Sharaon Garcia consultar el
-catálogo existente y gestionar, desde su teléfono celular, los pedidos de
-visita, contactos, seguimientos, citas y publicaciones planificadas.
+Ampliar el sitio web existente con un backend y una base de datos para que
+Sharaon Garcia gestione contactos, visitas y publicaciones desde su celular.
 
 ### Objetivos específicos
 
-1. Diseñar una base de datos relacional que incluya las propiedades y zonas
-   existentes, además de pedidos de visita, contactos, tareas, citas y
-   publicaciones planificadas.
-2. Sustituir la lectura del catálogo desde `datos.json` por consultas al
-   backend, preservando las funciones actuales de búsqueda, filtros y
-   presentación de propiedades.
-3. Registrar los pedidos de visita y permitir a la agente consultar y dar
-   seguimiento a contactos y actividades.
-4. Implementar una vista de actividades y citas por fecha, y un planificador de
-   publicaciones con fecha, red social y estado.
-5. Proteger el acceso al espacio de gestión y respaldar los datos registrados.
-6. Verificar el sistema mediante casos de prueba para sus flujos principales,
-   errores y visualización móvil.
+1. Diseñar una base de datos relacional para las propiedades, zonas, pedidos
+   de visita, contactos, tareas, citas y publicaciones planificadas.
+2. Conectar el catálogo existente al backend, preservando sus funciones, y
+   registrar los pedidos de visita para su consulta por la agente.
+3. Implementar la gestión de contactos, seguimientos, citas y publicaciones
+   planificadas en vistas adaptadas al uso móvil.
+4. Proteger el acceso y respaldar los datos; verificar los flujos principales,
+   los casos de error y la visualización móvil mediante pruebas.
 
 ---
 
@@ -236,15 +266,47 @@ El sistema **no** incluye, y en cada caso se indica por qué:
 
 ---
 
-## Cronograma (4 semanas, 20 clases)
+## Cronograma de actividades
+
+### Descomposición del trabajo
+
+```
+1. Propuesta y validación
+   1.1 Revisar el sitio existente y la memoria del proyecto
+   1.2 Entrevistar a la cliente y validar el problema
+   1.3 Priorizar requisitos y delimitar el alcance
+
+2. Análisis y diseño
+   2.1 Documentar requisitos funcionales y no funcionales
+   2.2 Diseñar la base de datos y las vistas de gestión
+   2.3 Definir casos de prueba y criterios de aceptación
+
+3. Construcción
+   3.1 Migrar propiedades y zonas desde datos.json a MySQL
+   3.2 Implementar el backend y conectar el catálogo existente
+   3.3 Implementar solicitudes de visita, contactos, actividades y publicaciones
+   3.4 Proteger el acceso al espacio de gestión
+
+4. Verificación y cierre
+   4.1 Ejecutar pruebas funcionales, de errores y de uso móvil
+   4.2 Documentar el respaldo y corregir los hallazgos
+   4.3 Preparar la documentación y evaluar el despliegue
+```
+
+### Cronograma (4 semanas, 20 clases)
 
 | Semana | Actividades |
 |---|---|
-| 1 | Entrevista formal; validación del problema, requisitos y datos; revisión del sitio existente; diseño de la base de datos y de las vistas móviles |
-| 2 | Implementación del backend; migración de propiedades y zonas; consulta del catálogo desde MySQL y pruebas de regresión de las funciones existentes |
-| 3 | Registro de pedidos de visita; gestión de contactos, seguimientos y citas; implementación del planificador de publicaciones |
-| 4 | Protección del espacio de gestión; respaldo; matriz de pruebas y validación móvil con la cliente; correcciones, documentación y despliegue si se confirma su factibilidad |
+| 1 | Entrevista formal; validación del problema, requisitos y datos; revisión del sitio existente; diseño de la base de datos y de las vistas móviles. **Entregable:** requisitos priorizados y diseño inicial. |
+| 2 | Implementación del backend; migración de propiedades y zonas; consulta del catálogo desde MySQL y pruebas de regresión de las funciones existentes. **Entregable:** catálogo conectado a la base de datos. |
+| 3 | Registro de solicitudes de visita; gestión de contactos, seguimientos y citas; implementación del planificador de publicaciones. **Entregable:** flujos principales implementados. |
+| 4 | Protección del espacio de gestión; respaldo; matriz de pruebas y validación móvil con la cliente; correcciones, documentación y despliegue si se confirma su factibilidad. **Entregable:** sistema probado y documentación final. |
 
 ---
 
-*(Documento en construcción: la entrevista formal con la cliente está pendiente. Las cifras de operación, los costos, la prioridad de los requisitos y la factibilidad del despliegue deben validarse antes de cerrar la propuesta.)*
+**Aspectos pendientes de validación.** La entrevista formal con la cliente debe
+confirmar las tareas prioritarias, el proceso actual, los datos necesarios y
+las condiciones de uso. Los costos son estimaciones preliminares y la
+factibilidad del despliegue depende de verificar un proveedor compatible. No se
+presentan cifras de operación ni resultados de observación que todavía no se
+hayan recopilado.
